@@ -46,6 +46,19 @@ public class TicTacToeController {
         /* MAIN LOOP (repeats until game is over) */
 
         // INSERT YOUR CODE HERE
+        while ( !( model.isGameover() ) )
+	        {
+	            view.showBoard(model.toString()); //prints board to screen
+	            TicTacToeMove nextMove = view.getNextMove(model.isXTurn()); //stores row, column choice
+	            boolean isMarked = model.makeMark(nextMove.getRow(), nextMove.getCol()); 
+	            while(!isMarked){
+	                view.showInputError(); 
+	                nextMove = view.getNextMove(model.isXTurn()); //stores new row, column choice
+	                isMarked = model.makeMark(nextMove.getRow(), nextMove.getCol());
+	            }
+	        }
+
+
         
         /* Display Results and Exit */
 
